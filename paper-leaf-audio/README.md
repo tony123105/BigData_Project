@@ -8,15 +8,25 @@ A complete description of the system is available in [our recent ICLR publicatio
 
 ## environment  
 
-*docker image:
-*docker pull tensorflow/tensorflow:2.13.0-gpu
+docker image:
 
-*apt update
-*apt install liblzma-dev
-*apt install ffmpeg
-*apt install git
+docker pull tensorflow/tensorflow:2.13.0-gpu
 
-*git clone https://github.com/1tnatsonC/BigData_Project.git
+docker run -it --gpus=all tensorflow/tensorflow:2.13.0-gpu
+
+
+## in docker
+
+apt update
+
+apt install liblzma-dev
+
+apt install ffmpeg
+
+apt install git
+
+
+git clone https://github.com/1tnatsonC/BigData_Project.git
 
 
 ## Installation
