@@ -8,15 +8,15 @@ A complete description of the system is available in [our recent ICLR publicatio
 
 ## environment  
 
-docker image:
-docker pull tensorflow/tensorflow:2.13.0-gpu
+*docker image:
+*docker pull tensorflow/tensorflow:2.13.0-gpu
 
-apt update
-apt install liblzma-dev
-apt install ffmpeg
-apt install git
+*apt update
+*apt install liblzma-dev
+*apt install ffmpeg
+*apt install git
 
-git clone https://github.com/1tnatsonC/BigData_Project.git
+*git clone https://github.com/1tnatsonC/BigData_Project.git
 
 
 ## Installation
@@ -51,16 +51,3 @@ or on LEAF:
 python3 -m example.main --gin_config=example/configs/leaf.gin
 ```
 
-## Reference
-If you use this repository, please consider citing:
-
-```
-@article{zeghidour2021leaf,
-  title={LEAF: A Learnable Frontend for Audio Classification},
-  author={Zeghidour, Neil and Teboul, Olivier and de Chaumont Quitry, F{\'e}lix and Tagliasacchi, Marco},
-  journal={ICLR},
-  year={2021}
-}
-```
-
-Note that this is not an officially supported Google product.
