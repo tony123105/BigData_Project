@@ -241,10 +241,14 @@ def train_model(model, train_dataset, validation_dataset, preprocessing_method, 
         m_mul=0.9,
         alpha=0.1
     )
-    
+
+    # Use AdamW optimizer with weight decay
     optimizer = tf.keras.optimizers.AdamW(
         learning_rate=lr_schedule,
-        weight_decay=0.01
+        weight_decay=0.01,
+        beta_1=0.9,
+        beta_2=0.999,
+        epsilon=1e-8
     )
     
     # Use regular cross entropy without label smoothing
@@ -399,6 +403,17 @@ def preprocess_dataset(ds, target_length=16000):
     ds = ds.map(preprocess_fn, num_parallel_calls=tf.data.AUTOTUNE)
     return ds
 
+def evaluate_model(model, test_dataset, preprocessing_method):
+    test_accuracy = tf.keras.metrics.SparseCategoricalAccuracy(name='test_accuracy')
+    
+    for x_batch, y_batch in test_dataset:
+        features = preprocessing_method(x_batch)
+        predictions = model(features, training=False)
+        test_accuracy.update_state(y_batch, predictions)
+    
+    print(f"Test accuracy: {test_accuracy.result().numpy():.4f}")
+    return test_accuracy.result().numpy()
+
 def prepare_dataset(dataset, batch_size=32, shuffle_buffer_size=10000):
     # First apply preprocessing to ensure consistent lengths
     dataset = preprocess_dataset(dataset)
@@ -445,6 +460,7 @@ audio_preprocessor = AudioPreprocessing()
 
 # List of preprocessing methods to compare
 preprocessing_methods = [
+    
     audio_preprocessor.leaf,
     audio_preprocessor.melfbanks,
     audio_preprocessor.tfbanks,
@@ -472,11 +488,19 @@ for prep_method in preprocessing_methods:
         train_dataset=train_ds,
         validation_dataset=validation_ds,
         preprocessing_method=prep_method,
-        epochs=20
+        epochs=10
     )
+    
+    # Evaluate on test dataset
+    test_accuracy = evaluate_model(model, test_ds, prep_method)
+    result['test_accuracy'] = test_accuracy
+    
     results.append(result)
 
 # Compare results
 for result in results:
     print(f"\nPreprocessing method: {result['preprocessing_method']}")
     print(f"Best validation accuracy: {result['best_val_accuracy']:.4f}")
+    print(f"Test accuracy: {result['test_accuracy']:.4f}")
+
+
