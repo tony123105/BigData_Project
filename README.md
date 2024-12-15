@@ -1,9 +1,9 @@
 # BigData_Project
  
-## repoduce the paper result 
+## Repoduce the paper result 
 you can read paper-leaf-audio folder readme
 
-## environment 
+## Environment 
 you can using paper-leaf-audio docker image
 
 ## corresponding code and report
