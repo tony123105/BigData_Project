@@ -1,8 +1,10 @@
 # BigData_Project
  
+## repoduce the paper reslut 
+you can read paper-leaf-audio folder readme
 
-#tensorflow dataset
-https://drive.google.com/file/d/1N40nHD5yz3wiChfwoz1wT9YnL3X3AxTz/view?usp=sharing
+## environment 
+you can using paper-leaf-audio docker image
 
-#dependency
-
+## corresponding code and report
+main_transformers_multiple.py - report 4.5
