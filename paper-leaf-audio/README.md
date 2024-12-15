@@ -14,8 +14,12 @@ or
 
 docker pull ken20020209/bigdata_project:latest
 
-##
+## docker run
+// cd to a empty folder
 
+docker run -p 80:8888 --gpus=all -v ${pwd}:/home/jovy {image name}
+
+## open bowser and enter localhost on URL 
 
 git clone https://github.com/1tnatsonC/BigData_Project.git
 
