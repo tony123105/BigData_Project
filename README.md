@@ -1,6 +1,6 @@
 # BigData_Project
  
-## repoduce the paper reslut 
+## repoduce the paper result 
 you can read paper-leaf-audio folder readme
 
 ## environment 
