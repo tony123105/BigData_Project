@@ -6,38 +6,31 @@ number of parameters.
 A complete description of the system is available in [our recent ICLR publication](https://openreview.net/forum?id=jM76BCb6F9m).
 
 
-## environment  
+## docker build
 
-docker image:
+docker build -t {name} .
 
-docker pull tensorflow/tensorflow:2.13.0-gpu
+or 
 
-docker run -it --gpus=all tensorflow/tensorflow:2.13.0-gpu
+docker pull ken20020209/bigdata_project:latest
 
-
-## in docker
-
-apt update
-
-apt install liblzma-dev
-
-apt install ffmpeg
-
-apt install git
+##
 
 
 git clone https://github.com/1tnatsonC/BigData_Project.git
 
 
+
 ## Installation
-From the root directory of the repo, run:
 
 ```bash
-pip3 install -e .
+cd BigData_Project/paper-leaf-audio
+
+pip3 install .
 ```
 
 
-## Training audio classification models
+## Training audio classification models and get test result
 
 We also provide a basic training library that allows combining a frontend with
 a main classification architecture (including PANN), and training it on a classification dataset.
